@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,8 +62,11 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
-                if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                System.out.println("\n");
+
+
+                if (searchField.equals("all") && searchTerm.equals((""))) {
+                    printJobs(JobData.findAll());
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -119,7 +123,20 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0) {
+            System.out.println("No results.");
+        } else {
+            for (int i = 0; i < someJobs.size(); i++) {
+                System.out.println("*****");
+                for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
 
-        System.out.println("printJobs is not implemented yet");
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+
+                    System.out.println(key + ": " + value);
+                }
+                System.out.println("*****");
+            }
+        }
     }
 }
