@@ -60,9 +60,10 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
-                System.out.println("Search term:");
+                System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
+                System.out.println("\n");
 
 
                 if (searchField.equals("all") && searchTerm.equals((""))) {
